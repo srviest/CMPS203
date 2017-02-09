@@ -155,6 +155,25 @@ class While(Comm):
             return s            
 
 
+def evalAll(s,c):
+    res=''
+    sCom = [s,c]
+    # print type(sCom[1]).__name__
+    while (type(sCom[1]).__name__!="Skip"):
+        "enter loop"
+        res += "\\< "
+        # # res += sCom[1].print()
+        res += ", "
+        res += str(sCom[0])
+        res += " \\> -> <br><br>"
+        # sCom = sCom[1].eval(s)
+    
+    res += "\\< "
+    # res += sCom[1].print()
+    res += ", "
+    res += str(sCom[0])
+    res += " \> -> <br><br>"
+    return res
 # test cases
 
 c1 = Assign('i',IntExp(0))
@@ -171,6 +190,6 @@ testCase1 = Next(Next(Next(c1, Skip()),c2), c3)
 s = dict()
 c3 = While(Less(VarExp('i'), IntExp(5)), whileC)
 tc0 =  Next(Next(Next(c1, Skip()),c2), c3)
-print tc0.eval(s)
-print type(tc0).__name__!="Next"
-print type('Skip')
+# print tc0.eval(s)
+
+evalAll(s, tc0)
